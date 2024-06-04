@@ -1,0 +1,217 @@
+{% extends "base/layout.html" %} {% block body %} {% load crispy_forms_tags %}
+{% load static%}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Include your JavaScript file -->
+<script src="{% static 'assets/js/cities.js' %}"></script>
+<div class="flex flex-col gap-2 py-4 md:flex-row md:items-center print:hidden">
+  <div class="grow">
+    <h5 class="text-16">Create Lead</h5>
+  </div>
+</div>
+<div class="card">
+  <div class="card-body">
+    <form method="post">
+      {% csrf_token %}
+      <div id="div_id_mobile_no" class="mb-3">
+        <label
+          for="id_mobile_no"
+          class="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Mobile no<span class="asteriskField">*</span>
+        </label>
+        <input
+          type="text"
+          name="mobile_no"
+          maxlength="15"
+          class="textinput focus:outline-none w-full appearance-none leading-normal border text-gray-700 bg-white block rounded-lg py-2 px-4 border-gray-300"
+          required
+          id="id_mobile_no"
+        />
+      </div>
+      <div id="div_id_email" class="mb-3">
+        <label
+          for="id_id_email"
+          class="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Email<span class="asteriskField">*</span>
+        </label>
+        <input
+          type="email"
+          name="email"
+          class="textinput focus:outline-none w-full appearance-none leading-normal border text-gray-700 bg-white block rounded-lg py-2 px-4 border-gray-300"
+          required
+          id="id_email"
+        />
+      </div>
+      <div id="div_id_name" class="mb-3">
+        <label for="id_name" class="block text-gray-700 text-sm font-bold mb-2">
+          Name<span class="asteriskField">*</span>
+        </label>
+        <input
+          type="text"
+          name="name"
+          maxlength="20"
+          class="textinput focus:outline-none w-full appearance-none leading-normal border text-gray-700 bg-white block rounded-lg py-2 px-4 border-gray-300"
+          required
+          id="id_name"
+        />
+      </div>
+      <div id="div_id_lead_type" class="mb-3">
+        <label
+          for="id_lead_type"
+          class="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Lead type<span class="asteriskField">*</span>
+        </label>
+        <div class="mb-3">
+          <div class="relative">
+            <select
+              class="bg-white focus:outline-none border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal text-gray-700"
+              name="lead_type"
+              id="id_lead_type"
+              required
+            >
+              <option value="" selected>Choose...</option>
+              <option value="walk_in">Walk in</option>
+              <option value="reference">Reference</option>
+              <option value="social_media">Social Media</option>
+              <option value="google">Google</option>
+            </select>
+            <div
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+            >
+              <svg
+                class="fill-current h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="div_id_customer_type" class="mb-3">
+        <label
+          for="id_customer_type"
+          class="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Customer type<span class="asteriskField">*</span>
+        </label>
+        <div class="mb-3">
+          <div class="relative">
+            <select
+              class="bg-white focus:outline-none border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal text-gray-700"
+              name="customer_type"
+              id="id_customer_type"
+              required
+            >
+              <option value="" selected>Choose...</option>
+              <option value="diamond">Diamond</option>
+              <option value="gold">Gold</option>
+              <option value="silver">Silver</option>
+            </select>
+            <div
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+            >
+              <svg
+                class="fill-current h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="div_id_birthday_date" class="mb-3">
+        <label
+          for="id_birthday_date"
+          class="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Birthday date<span class="asteriskField">*</span>
+        </label>
+        <input
+          type="date"
+          name="birthday_date"
+          class="textinput focus:outline-none w-full appearance-none leading-normal border text-gray-700 bg-white block rounded-lg py-2 px-4 border-gray-300"
+          required
+          id="id_birthday_date"
+        />
+      </div>
+      <div id="div_id_anniversary_date" class="mb-3">
+        <label
+          for="id_anniversary_date"
+          class="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Anniversary date<span class="asteriskField">*</span>
+        </label>
+        <input
+          type="date"
+          name="anniversary_date"
+          class="textinput focus:outline-none w-full appearance-none leading-normal border text-gray-700 bg-white block rounded-lg py-2 px-4 border-gray-300"
+          required
+          id="id_anniversary_date"
+        />
+      </div>
+      <div id="div_id_state" class="mb-3">
+        <label for="id_state" class="block text-gray-700 text-sm font-bold mb-2"
+          >State <span class="asteriskField">*</span></label
+        >
+        <select
+          onchange="print_city('id_city', this.selectedIndex);"
+          id="id_state"
+          name="state"
+          class="form-select mb-3 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+          required
+        ></select>
+      </div>
+      <div id="div_id_state" class="mb-3">
+        <label for="id_city" class="block text-gray-700 text-sm font-bold mb-2"
+          >City<span class="asteriskField">*</span></label
+        >
+        <select
+          id="id_city"
+          name="city"
+          class="form-select border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+          required
+        ></select>
+      </div>
+      <script>
+        print_state("id_state");
+      </script>
+
+      <div id="div_id_lead_assigned_to" class="mb-3">
+        <label
+          for="id_lead_assigned_to"
+          class="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Lead assigned to<span class="asteriskField">*</span>
+        </label>
+        <input
+          type="text"
+          name="lead_assigned_to"
+          maxlength="20"
+          class="textinput focus:outline-none w-full appearance-none leading-normal border text-gray-700 bg-white block rounded-lg py-2 px-4 border-gray-300"
+          required
+          id="id_lead_assigned_to"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+
+<!--end card-->
+{% endblock %}
